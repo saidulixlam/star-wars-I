@@ -83,10 +83,18 @@ const CharacterDetails = () => {
                         </AnimatePresence>
 
 
-
+                        <AnimatePresence>
+                            <AnimatedText
+                                key="star-wars-title"
+                                initial={{ y: 10, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ duration: 0.5, delay: 0.5 }}
+                                >
                         <Text mt={6} fontSize="2rem" color="rgb(229,9,20)" fontWeight="bold">
                             Films Featured In:
                         </Text>
+                        </AnimatedText>
+                        </AnimatePresence>
                         <motion.ul
                             initial={{ y: 10, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}

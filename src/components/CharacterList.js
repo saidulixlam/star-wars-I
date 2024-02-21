@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Text, Button, Flex } from '@chakra-ui/react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence} from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 const CharacterList = () => {
     const [characters, setCharacters] = useState([]);
@@ -82,7 +82,7 @@ const CharacterList = () => {
             </AnimatePresence>
 
             {loading ? (
-                <Text>Loading...</Text>
+                <Text color='white' fontSize='1.5rem'>Loading...</Text>
             ) : (
                 characters.length > 0 ? (
                     <motion.ul
@@ -96,7 +96,7 @@ const CharacterList = () => {
                         }}
                     >
                         {characters.map((character) => (
-                            <li key={character.name} style={{ marginBottom: '6px', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                            <li key={character.name} style={{ marginBottom: '6px',gap:'3rem', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                                 <span style={{ fontSize: '2rem' }}>{character.name}</span>
                                 <button
                                     style={{
