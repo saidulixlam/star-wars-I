@@ -107,12 +107,14 @@ const CharacterDetails =() => {
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ duration: 0.5, delay: 0.6 }}
                             style={{
-                                width: '50%',
-                                listStyle: 'none',
-                                padding: ['1rem', '1rem', '1rem'],
-                                margin: 'auto',
-                                textAlign: 'center',
-                            }}
+                                width: '100%', // Default width for smaller screens
+                                marginBottom: '12px',
+                                color: 'white',
+                                padding: '10px',
+                                borderRadius: '8px',
+                                cursor: 'pointer',
+                                
+                              }}
                         >
                             {films.map((film, index) => (
                                 <motion.li
@@ -121,13 +123,18 @@ const CharacterDetails =() => {
                                     animate={{ y: 0, opacity: 1 }}
                                     transition={{ duration: 0.5, delay: 0.1 * index }}
                                     style={{
+                                        listStyle:'none',
                                         marginBottom: '8px',
                                         color: 'white',
-                                        padding: '10px',
+                                        padding: '12px',
                                         borderRadius: '8px',
                                         background: 'rgba(229,9,20,0.8)',
                                         cursor: 'pointer',
+                                        margin:'1rem',
                                         transition: 'background 0.3s',
+                                        '@media (min-width: 800px)': {
+                                            width: '60%', // Adjust width for screens starting from 1200px width
+                                          },
                                     }}
                                     whileHover={{ background: 'rgba(229,9,20,1)' }}
                                 >

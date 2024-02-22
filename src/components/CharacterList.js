@@ -142,7 +142,7 @@ const CharacterList = () => {
                     transition={{ duration: 0.3, delay: 0.8 }}
                     style={{
                         display: 'flex',
-                        justifyContent: 'space-between',
+                        justifyContent: 'space-around',
                         alignItems: 'center',
                         marginTop: '1rem',
                         width: ['100%', '80%', '80%'],
@@ -158,19 +158,19 @@ const CharacterList = () => {
                         Next
                     </Button>
                     
-                    <div style={{
-                        display: 'flex',
-                        flexDirection:'row',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        
-    
-                    }}>
-                        <form onSubmit={handleSubmit}>
+                    <div>
+                        <form 
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            flexDirection: 'row', // Change flex direction to column on smaller screens
+                          }}
+                          onSubmit={handleSubmit}>
                         <Input 
                         style={{borderRadius:'4px',height:'40px',width:'70px',color:'white',margin: '10px'}}
                         type="number" ref={pageNumberRef} placeholder='search' max="9"/>
-                        <Button type='submit' style={{ marginBottom: '5px' }}>Go
+                        <Button type='submit' >Go
                     </Button>
                     </form>
                     </div>
@@ -181,7 +181,7 @@ const CharacterList = () => {
                             background: 'transparent',
                         }}
                     >
-                        <span>Page No.</span>{page}
+                        <span>Page :</span>{page}
                     </Button>
                 </motion.div>
             </AnimatePresence>}
