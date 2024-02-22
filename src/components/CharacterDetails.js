@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { Box, Text } from '@chakra-ui/react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Box, Text, Center,Button } from '@chakra-ui/react';
 import { motion, AnimatePresence } from 'framer-motion';
-const CharacterDetails = () => {
+
+const CharacterDetails =() => {
     const { id } = useParams();
     const [character, setCharacter] = useState(null);
     const [films, setFilms] = useState([]);
     const AnimatedText = motion(Text);
-
+    const navigate =useNavigate();
+  const handleGoBack = () => {
+    navigate(-1);
+  };
     useEffect(() => {
         const fetchCharacterDetails = async () => {
             try {
@@ -29,13 +33,16 @@ const CharacterDetails = () => {
         };
 
         fetchCharacterDetails();
-    }, [id]);
+  }, [id]);
 
     return (
-        <div style={{ background: 'url("public/images/bg.jpg") no-repeat center center fixed', backgroundSize: 'cover', height: '100vh' }}>
-            <Box style={{ padding: '20px', color: 'white', textAlign: 'center' }}>
+        <div style={{ background: 'url("public/images/bg.jpg") no-repeat center center fixed', backgroundSize: 'cover', minHeight: '100vh', height: 'auto'}}>
+            <Box style={{ padding: '15px', color: 'white', textAlign: 'center' }}>
                 {character ? (
                     <>
+                        <Button mt={4} onClick={handleGoBack} >
+                            Go Back
+                        </Button>
                         <AnimatePresence>
                             <AnimatedText
                                 key="star-wars-title"
@@ -89,11 +96,11 @@ const CharacterDetails = () => {
                                 initial={{ y: 10, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ duration: 0.5, delay: 0.5 }}
-                                >
-                        <Text mt={6} fontSize="2rem" color="rgb(229,9,20)" fontWeight="bold">
-                            Films Featured In:
-                        </Text>
-                        </AnimatedText>
+                            >
+                                <Text mt={6} fontSize="2rem" color="rgb(229,9,20)" fontWeight="bold">
+                                    Films Featured In:
+                                </Text>
+                            </AnimatedText>
                         </AnimatePresence>
                         <motion.ul
                             initial={{ y: 10, opacity: 0 }}
@@ -125,13 +132,17 @@ const CharacterDetails = () => {
                                     whileHover={{ background: 'rgba(229,9,20,1)' }}
                                 >
                                     <span style={{ fontSize: ['1rem', '1rem', '2rem'] }}>{film.title}</span>
-                                   
+
                                 </motion.li>
                             ))}
                         </motion.ul>
                     </>
                 ) : (
-                    <Text>Loading...</Text>
+                    <Center h="100vh">
+                        <Text color="white" fontSize="1.5rem">
+                            Loading...
+                        </Text>
+                    </Center>
                 )}
             </Box>
         </div>
